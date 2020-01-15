@@ -119,7 +119,7 @@ if (count($cases) == 0) {
                 <th style="width: 15%;">Title</th>
                 <th style="width: 35%;">Description</th>
                 <th style="width: 35%;">Outcome</th>
-                <th style="width: 5%;">J-Board Decided</th>
+                <th style="width: 5%;">Appealed to J-Board</th>
             </tr>
         </thead>
     <?php
