@@ -5,7 +5,7 @@ include_once("init.php");
 if ($_SESSION['level'] == 0 || $_SESSION['level'] > 2) {
     die();
 }
-$handle = $config['dbo']->prepare('SELECT * FROM cases ORDER BY year, title');
+$handle = $config['dbo']->prepare('SELECT * FROM cases ORDER BY year DESC, id DESC');
 $handle->execute();
 $cases = $handle->fetchAll(\PDO::FETCH_ASSOC);
 
@@ -62,7 +62,7 @@ if ($_SESSION['level'] > 1) {
                 </div>
                 <div class="form-group">
                     <label for="newCaseYear">Year</label>
-                    <input name="year" type="number" min="2019" step="1" class="form-control" id="newCaseYear" aria-describedby="emailHelp" placeholder="2010" required>
+                    <input name="year" type="number" min="2019" step="1" class="form-control" id="newCaseYear" aria-describedby="emailHelp" placeholder="2010" required value="<?php echo date('Y'); ?>">
                 </div>
                 <div class="form-group">
                     <label for="newCaseDescription">Description</label>
@@ -73,7 +73,7 @@ if ($_SESSION['level'] > 1) {
                     <textarea name="outcome" class="form-control" id="newCaseOutcome" rows="2" required></textarea>
                 </div>
                 <div class="form-group">
-                    <label for="newCaseDecided">J-Board Decided</label>
+                    <label for="newCaseDecided">Appealed to J-Board</label>
                     <select name="jboardRuling" required id="newCaseDecided">
                         <option value="0">No</option>
                         <option value="1">Yes</option>
@@ -115,11 +115,11 @@ if (count($cases) == 0) {
     <table class="table table-striped">
         <thead class="thead-dark">
             <tr>
-                <th style="width: 10%;">Year</th>
+                <th style="width: 5%;">Year</th>
                 <th style="width: 15%;">Title</th>
                 <th style="width: 35%;">Description</th>
                 <th style="width: 35%;">Outcome</th>
-                <th style="width: 5%;">Appealed to J-Board</th>
+                <th style="width: 10%;">Appealed to J-Board</th>
             </tr>
         </thead>
     <?php
