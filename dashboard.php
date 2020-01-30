@@ -16,7 +16,7 @@ if ($_SESSION['level'] > 1) {
         $handle->execute();
         header("Location: ?");
         die();
-    } else if ($_POST['action'] == 'newCase') {
+    } elseif ($_POST['action'] == 'newCase') {
         $handle = $config['dbo']->prepare('INSERT INTO cases (year, description, outcome, jboardRuling, title) VALUES (?, ?, ?, ?, ?)');
         $handle->bindValue(1, $_POST['year']);
         $handle->bindValue(2, $_POST['description']);
@@ -84,7 +84,7 @@ if ($_SESSION['level'] > 1) {
             </form>
         </div>
         <?php
-    } else if ($_GET['action'] == 'deleteCase') {
+    } elseif ($_GET['action'] == 'deleteCase') {
         ?>
         <div class="pl-4 pr-4 mb-4">
             <form method="post">
@@ -94,8 +94,7 @@ if ($_SESSION['level'] > 1) {
                         <?php
                         foreach ($cases as $case) {
                             echo "<option value='" . $case['id'] . "'>" . $case['year'] . ': ' . $case['title'] . "</option>";
-                        }
-                        ?>
+                        } ?>
                     </select>
                 </div>
                 <input type="hidden" name="action" value="deleteCase">
@@ -125,11 +124,11 @@ if (count($cases) == 0) {
     <?php
     foreach ($cases as $case) {
         echo "<tr>";
-            echo "<td>" . $case['year'] . "</td>";
-            echo "<td>" . $case['title'] . "</td>";
-            echo "<td>" . nl2br($case['description']) . "</td>";
-            echo "<td>" . nl2br($case['outcome']) . "</td>";
-            echo "<td>" . ($case['jboardRuling'] ? 'Yes' : 'No') . "</td>";
+        echo "<td>" . $case['year'] . "</td>";
+        echo "<td>" . $case['title'] . "</td>";
+        echo "<td>" . nl2br($case['description']) . "</td>";
+        echo "<td>" . nl2br($case['outcome']) . "</td>";
+        echo "<td>" . ($case['jboardRuling'] ? 'Yes' : 'No') . "</td>";
         echo "</tr>";
     }
     echo "</table>";
