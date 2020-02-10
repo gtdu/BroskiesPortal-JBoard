@@ -58,11 +58,11 @@ if ($_SESSION['level'] > 1) {
             <form method="post">
                 <div class="form-group">
                     <label for="newCaseTitle">Title</label>
-                    <input name="title" type="text" class="form-control" id="newCaseTitle" aria-describedby="emailHelp" placeholder="Punching A Hole In The Wall" required>
+                    <input name="title" type="text" class="form-control" id="newCaseTitle" aria-describedby="aria" placeholder="Punching A Hole In The Wall" required>
                 </div>
                 <div class="form-group">
                     <label for="newCaseYear">Year</label>
-                    <input name="year" type="number" min="2019" step="1" class="form-control" id="newCaseYear" aria-describedby="emailHelp" placeholder="2010" required value="<?php echo date('Y'); ?>">
+                    <input name="year" type="number" min="2019" step="1" class="form-control" id="newCaseYear" aria-describedby="aria" placeholder="2010" required value="<?php echo date('Y'); ?>">
                 </div>
                 <div class="form-group">
                     <label for="newCaseDescription">Description</label>
